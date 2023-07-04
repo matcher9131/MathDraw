@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathDraw", "MathDraw\MathDraw.csproj", "{8957A29E-A379-496A-A20C-68331BF5D0D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parsing", "Parsing\Parsing.csproj", "{58E6F5E1-72C2-4A48-A7C5-1E08B362CC50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parsing.Tests", "Parsing.Tests\Parsing.Tests.csproj", "{A372A149-33C8-46AF-8CBB-2DD2424AC790}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8957A29E-A379-496A-A20C-68331BF5D0D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8957A29E-A379-496A-A20C-68331BF5D0D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8957A29E-A379-496A-A20C-68331BF5D0D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8957A29E-A379-496A-A20C-68331BF5D0D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58E6F5E1-72C2-4A48-A7C5-1E08B362CC50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E6F5E1-72C2-4A48-A7C5-1E08B362CC50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E6F5E1-72C2-4A48-A7C5-1E08B362CC50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E6F5E1-72C2-4A48-A7C5-1E08B362CC50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A372A149-33C8-46AF-8CBB-2DD2424AC790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A372A149-33C8-46AF-8CBB-2DD2424AC790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A372A149-33C8-46AF-8CBB-2DD2424AC790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A372A149-33C8-46AF-8CBB-2DD2424AC790}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A206D9F-45C3-4C98-8B6D-2497265AEE72}
+	EndGlobalSection
+EndGlobal
