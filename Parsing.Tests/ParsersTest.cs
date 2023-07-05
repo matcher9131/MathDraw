@@ -16,6 +16,24 @@
             Assert.Equal(expectedRemain, result.Remain);
         }
 
+        public static readonly object[][] CharOfTest2Data =
+        {
+            new object[] { "abc", (char c) => c == 'a' || c == 'b', true, 'a', "bc" },
+            new object[] { "bcd", (char c) => c == 'a' || c == 'b', true, 'b', "cd" },
+            new object[] { "cde", (char c) => c == 'a' || c == 'b', false, default(char), "cde" },
+            new object[] { "", (char c) => c == 'a' || c == 'b', false, default(char), "" }
+        };
+        [Theory]
+        [MemberData(nameof(CharOfTest2Data))]
+        public void CharOfTest2(string input, Func<char, bool> cond, bool expectedIsSuccess, char expectedValue, string expectedRemain)
+        {
+            Result<char> result = Parsers.CharOf(cond).Parse(input);
+
+            Assert.Equal(expectedIsSuccess, result.IsSuccess);
+            Assert.Equal(expectedValue, result.Value);
+            Assert.Equal(expectedRemain, result.Remain);
+        }
+
         [Theory]
         [InlineData("abc", "ab", true, "ab", "c")]
         [InlineData("abc", "abc", true, "abc", "")]
