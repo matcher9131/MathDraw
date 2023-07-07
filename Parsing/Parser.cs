@@ -86,8 +86,8 @@ namespace Parsing
 
         /// <summary>
         /// このインスタンスによるパースを失敗するまで連続して行い、その結果を返すようなパーサを新たに作成する
-        /// この新たなパーサは1回目のパースに失敗しても成功を表す結果を返す
         /// </summary>
+        /// <remarks>この新たなパーサは1回目のパースに失敗しても成功を表す結果を返す</remarks>
         /// <returns>新しいパーサ</returns>
         public Parser<IEnumerable<T?>> Many() => new(input =>
         {
@@ -105,8 +105,8 @@ namespace Parsing
 
         /// <summary>
         /// このインスタンスによるパースを失敗するまで連続して行い、その結果を返すようなパーサを新たに作成する
-        /// この新たなパーサは1回目のパースに失敗した場合は失敗を表す結果を返す
         /// </summary>
+        /// <remarks>この新たなパーサは1回目のパースに失敗した場合は失敗を表す結果を返す</remarks>
         /// <returns>新しいパーサ</returns>
         public Parser<IEnumerable<T?>> AtLeastOne() =>
             from value in this
