@@ -17,7 +17,16 @@ namespace Parsing.Parsers
             from number in Basic.Number()
             select (Expression)Expression.Constant(number);
 
-        public static Parser<Expression> PrimaryExpr() => Variable().OrElse(Literal());
+        public static Parser<Expression> PrimaryExpr() => Variable()
+            .OrElse(Literal())
+            .OrElse(
+                from _ in Basic.CharOf('(')
+                from _ in Basic.WhiteSpaces()
+                from relationalExpr in Binary.RelationalExpr()
+                from _ in Basic.WhiteSpaces()
+                from _ in Basic.CharOf(')')
+                select relationalExpr
+            );
 
         public static Parser<Expression> UnaryExpr() =>
             (from _ in Basic.CharOf('-')
