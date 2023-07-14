@@ -11,20 +11,21 @@ namespace Parsing.Parsers
     {
         public static Parser<Expression> Variable() =>
             from name in Basic.Identifier()
-            select (Expression)Expression.Parameter(typeof(decimal), name);
+            select (Expression)Expression.Parameter(typeof(double), name);
 
         public static Parser<Expression> Literal() =>
             from number in Basic.Number()
             select (Expression)Expression.Constant(number);
 
-        public static Parser<Expression> PrimaryExpr() => Variable()
+        public static Parser<Expression> PrimaryExpr() =>
+            Variable()
             .OrElse(Literal())
             .OrElse(
-                from _ in Basic.CharOf('(')
-                from _ in Basic.WhiteSpaces()
+                from _1 in Basic.CharOf('(')
+                from _2 in Basic.WhiteSpaces()
                 from relationalExpr in Binary.RelationalExpr()
-                from _ in Basic.WhiteSpaces()
-                from _ in Basic.CharOf(')')
+                from _3 in Basic.WhiteSpaces()
+                from _4 in Basic.CharOf(')')
                 select relationalExpr
             );
 

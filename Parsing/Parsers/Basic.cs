@@ -54,23 +54,23 @@ namespace Parsing.Parsers
         public static Parser<char> Digit() => CharOf("0123456789".Contains);
 
 
-        private static Parser<decimal> UnsignedInteger() =>
+        private static Parser<double> UnsignedInteger() =>
             from digits in Digit().AtLeastOne()
-            select decimal.Parse(string.Concat(digits));
+            select double.Parse(string.Concat(digits));
 
-        private static Parser<decimal> UnsignedDecimal() =>
+        private static Parser<double> Unsigneddouble() =>
             from integerPart in Digit().Many()
             from point in CharOf('.')
             from fractionalPart in Digit().AtLeastOne()
-            select decimal.Parse(string.Concat(integerPart.Append(point).Concat(fractionalPart)));
+            select double.Parse(string.Concat(integerPart.Append(point).Concat(fractionalPart)));
 
-        private static Parser<decimal> UnsignedNumber() => UnsignedDecimal().OrElse(UnsignedInteger());
+        private static Parser<double> UnsignedNumber() => Unsigneddouble().OrElse(UnsignedInteger());
 
         /// <summary>
         /// 1つの数をパースするパーサを新たに作成する
         /// </summary>
         /// <returns>新しいパーサ</returns>
-        public static Parser<decimal> Number() =>
+        public static Parser<double> Number() =>
             (from _ in CharOf('+').Option()
              from number in UnsignedNumber()
              select number)

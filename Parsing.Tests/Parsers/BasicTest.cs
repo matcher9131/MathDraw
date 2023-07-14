@@ -84,30 +84,30 @@ namespace Parsing.Tests.Parsers
 
         public static readonly object[][] NumberTestData =
         {
-            new object[] { "123abc", true, 123m, "abc" },
-            new object[] { "3.1415", true, 3.1415m, "" },
-            new object[] { ".1020", true, 0.1020m, "" },
-            new object[] { "123.a", true, 123m, ".a" },
-            new object[] { "a123", false, default(decimal), "a123" },
-            new object[] { "", false, default(decimal), "" },
-            new object[] { "+123abc", true, 123m, "abc" },
-            new object[] { "+3.1415", true, 3.1415m, "" },
-            new object[] { "+.1020", true, 0.1020m, "" },
-            new object[] { "+123.a", true, 123m, ".a" },
-            new object[] { "+a123", false, default(decimal), "+a123" },
-            new object[] { "+", false, default(decimal), "+" },
-            new object[] { "-123abc", true, -123m, "abc" },
-            new object[] { "-3.1415", true, -3.1415m, "" },
-            new object[] { "-.1020", true, -0.1020m, "" },
-            new object[] { "-123.a", true, -123m, ".a" },
-            new object[] { "-a123", false, default(decimal), "-a123" },
-            new object[] { "-", false, default(decimal), "-" },
+            new object[] { "123abc", true, 123, "abc" },
+            new object[] { "3.1415", true, 3.1415, "" },
+            new object[] { ".1020", true, 0.1020, "" },
+            new object[] { "123.a", true, 123, ".a" },
+            new object[] { "a123", false, default(double), "a123" },
+            new object[] { "", false, default(double), "" },
+            new object[] { "+123abc", true, 123, "abc" },
+            new object[] { "+3.1415", true, 3.1415, "" },
+            new object[] { "+.1020", true, 0.1020, "" },
+            new object[] { "+123.a", true, 123, ".a" },
+            new object[] { "+a123", false, default(double), "+a123" },
+            new object[] { "+", false, default(double), "+" },
+            new object[] { "-123abc", true, -123, "abc" },
+            new object[] { "-3.1415", true, -3.1415, "" },
+            new object[] { "-.1020", true, -0.1020, "" },
+            new object[] { "-123.a", true, -123, ".a" },
+            new object[] { "-a123", false, default(double), "-a123" },
+            new object[] { "-", false, default(double), "-" },
         };
         [Theory]
         [MemberData(nameof(NumberTestData))]
-        public void NumberTest(string input, bool expectedIsSuccess, decimal expectedValue, string expectedRemain)
+        public void NumberTest(string input, bool expectedIsSuccess, double expectedValue, string expectedRemain)
         {
-            Result<decimal> result = Number().Parse(input);
+            Result<double> result = Number().Parse(input);
 
             Assert.Equal(expectedIsSuccess, result.IsSuccess);
             Assert.Equal(expectedValue, result.Value);

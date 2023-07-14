@@ -13,13 +13,13 @@ namespace Parsing.Tests.Parsers
     {
         public static readonly object?[][] VariableTestData =
         {
-            new object[] { "abc", true, (Expression)Expression.Parameter(typeof(decimal), "abc"), "" },
-            new object[] { "a0_b1", true, (Expression)Expression.Parameter(typeof(decimal), "a0_b1"), "" },
-            new object[] { "_private", true, (Expression)Expression.Parameter(typeof(decimal), "_private"), "" },
+            new object[] { "abc", true, (Expression)Expression.Parameter(typeof(double), "abc"), "" },
+            new object[] { "a0_b1", true, (Expression)Expression.Parameter(typeof(double), "a0_b1"), "" },
+            new object[] { "_private", true, (Expression)Expression.Parameter(typeof(double), "_private"), "" },
             new object?[] { "0abc", false, null, "0abc" },
             new object?[] { "+abc", false, null, "+abc" },
             new object?[] { "-abc", false, null, "-abc" },
-            new object[] { "abc+def", true, (Expression)Expression.Parameter(typeof(decimal), "abc"), "+def" },
+            new object[] { "abc+def", true, (Expression)Expression.Parameter(typeof(double), "abc"), "+def" },
             new object?[] { "", false, null, "" },
         };
         [Theory]
@@ -35,10 +35,10 @@ namespace Parsing.Tests.Parsers
 
         public static readonly object?[][] LiteralTestData =
         {
-            new object[] { "123abc", true, (Expression)Expression.Constant(123m), "abc" },
-            new object[] { "123.45abc", true, (Expression)Expression.Constant(123.45m), "abc" },
-            new object[] { "+123.45abc", true, (Expression)Expression.Constant(123.45m), "abc" },
-            new object[] { "-123.45abc", true, (Expression)Expression.Constant(-123.45m), "abc" },
+            new object[] { "123abc", true, (Expression)Expression.Constant(123), "abc" },
+            new object[] { "123.45abc", true, (Expression)Expression.Constant(123.45), "abc" },
+            new object[] { "+123.45abc", true, (Expression)Expression.Constant(123.45), "abc" },
+            new object[] { "-123.45abc", true, (Expression)Expression.Constant(-123.45), "abc" },
             new object?[] { "abc", false, null, "abc" },
         };
         [Theory]
@@ -55,9 +55,9 @@ namespace Parsing.Tests.Parsers
 
         public static readonly object?[][] PrimaryExprTestData =
         {
-            new object[] { "123.45abc", true, (Expression)Expression.Constant(123.45m), "abc" },
-            new object[] { "_private", true, (Expression)Expression.Parameter(typeof(decimal), "_private"), "" },
-            new object[] { "abc+def", true, (Expression)Expression.Parameter(typeof(decimal), "abc"), "+def" },
+            new object[] { "123.45abc", true, (Expression)Expression.Constant(123.45), "abc" },
+            new object[] { "_private", true, (Expression)Expression.Parameter(typeof(double), "_private"), "" },
+            new object[] { "abc+def", true, (Expression)Expression.Parameter(typeof(double), "abc"), "+def" },
             new object?[] { "+abc", false, null, "+abc" },
             new object?[] { "-abc", false, null, "-abc" },
         };
@@ -74,11 +74,11 @@ namespace Parsing.Tests.Parsers
 
         public static readonly object?[][] UnaryExprTestData =
         {
-            new object[] { "123.45abc", true, (Expression)Expression.Constant(123.45m), "abc" },
-            new object[] { "_private", true, (Expression)Expression.Parameter(typeof(decimal), "_private"), "" },
-            new object[] { "abc+def", true, (Expression)Expression.Parameter(typeof(decimal), "abc"), "+def" },
-            new object[] { "+abc", true, (Expression)Expression.Parameter(typeof(decimal), "abc"), "" },
-            new object[] { "-abc", true, (Expression)Expression.Negate(Expression.Parameter(typeof(decimal), "abc")), "" },
+            new object[] { "123.45abc", true, (Expression)Expression.Constant(123.45), "abc" },
+            new object[] { "_private", true, (Expression)Expression.Parameter(typeof(double), "_private"), "" },
+            new object[] { "abc+def", true, (Expression)Expression.Parameter(typeof(double), "abc"), "+def" },
+            new object[] { "+abc", true, (Expression)Expression.Parameter(typeof(double), "abc"), "" },
+            new object[] { "-abc", true, (Expression)Expression.Negate(Expression.Parameter(typeof(double), "abc")), "" },
         };
         [Theory]
         [MemberData(nameof(UnaryExprTestData))]
